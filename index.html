@@ -50,11 +50,14 @@
 <body>
   <h1>彩色麵疙瘩 點餐系統</h1>
 
-  <table id="menuTable">
-    <thead>
-      <tr><th>品項</th><th>價格</th><th>數量</th><th>加飯/麵</th><th>加辣</th></tr>
-    </thead>
-    <tbody>
+  <button onclick="toggleMenu()">顯示 / 隱藏菜單</button>
+
+  <div id="menuSection" style="display: none;">
+    <table id="menuTable">
+      <thead>
+        <tr><th>品項</th><th>價格</th><th>數量</th><th>加飯/麵</th><th>加辣</th></tr>
+      </thead>
+      <tbody>
       <tr><td colspan="5" class="category">麵疙瘩</td></tr>
       <tr><td>菜蛋麵疙瘩</td><td>75</td><td><input type="number" data-name="菜蛋麵疙瘩" data-price="75" min="0" value="0"></td><td><input type="number" data-addon="10" value="0"></td><td><input type="number" value="0"></td></tr>
       <tr><td>乾麵疙瘩</td><td>85</td><td><input type="number" data-name="乾麵疙瘩" data-price="85" min="0" value="0"></td><td><input type="number" data-addon="10" value="0"></td><td><input type="number" value="0"></td></tr>
@@ -88,13 +91,19 @@
       <tr><td>魚肚麵疙瘩</td><td>130</td><td><input type="number" data-name="魚肚麵疙瘩" data-price="130" min="0" value="0"></td><td><input type="number" data-addon="10" value="0"></td><td><input type="number" value="0"></td></tr>
       <tr><td>麻辣麵疙瘩</td><td>130</td><td><input type="number" data-name="麻辣麵疙瘩" data-price="130" min="0" value="0"></td><td><input type="number" data-addon="10" value="0"></td><td><input type="number" value="0"></td></tr>
       <tr><td>麻奶麵疙瘩</td><td>140</td><td><input type="number" data-name="麻奶麵疙瘩" data-price="140" min="0" value="0"></td><td><input type="number" data-addon="10" value="0"></td><td><input type="number" value="0"></td></tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
 
-  <button onclick="calculateTotal()">計算總金額</button>
-  <p id="totalResult"></p>
+    <button onclick="calculateTotal()">計算總金額</button>
+    <p id="totalResult"></p>
+  </div>
 
   <script>
+    function toggleMenu() {
+      const section = document.getElementById("menuSection");
+      section.style.display = section.style.display === "none" ? "block" : "none";
+    }
+
     function calculateTotal() {
       const rows = document.querySelectorAll("#menuTable tbody tr");
       let total = 0;
